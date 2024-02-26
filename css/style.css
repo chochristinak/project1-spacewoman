@@ -1,0 +1,119 @@
+body {
+   display: center;
+   align-items: center; 
+   justify-content: center;
+   min-height: 100vh;
+   font-family: "Redressed", cursive;
+   background-color: rgb(245, 214, 218); 
+   height: 100%;
+   text-align: center;
+   font-size: 18px;
+   margin-top: 200px;
+   background-image: url
+}
+
+.container {
+  clear;
+  width: 100%;
+  margin: 0 auto;
+}
+
+p#wordholder
+
+
+.letters {
+    display: flex-center;
+}
+/* button {
+  font-family: "Redressed", cursive;
+  background: rgb(152, 149, 149);
+  border-radius: 10px;
+  color: white;
+  border: solid 1px white;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 18px 10px;
+  width: 40px;
+  height: 30px;
+  margin: 1px;
+  outline: none;
+
+  &:hover {
+    @include transition;
+    background: rgb(184, 178, 178);
+    border: solid 1px white;
+    color: rgb(242, 241, 241);
+  }
+} */
+
+canvas {
+  color: white;
+  border: black dashed 2px;
+  padding: 15px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Redressed", cursive;
+  font-weight: 100;
+  margin: 5px 0;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 4em;
+  
+}
+
+h2 {
+  font-size: 2em;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+ul,
+li {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: .5em;
+    text-transform: uppercase;
+
+}
+
+.active {
+  opacity: .5;
+  cursor: default; 
+  hover {
+    @include fade;
+    @include opacity;
+  }
+}
+
+button#hint,
+button#reset {
+  font-family: "Redressed", cursive;
+  background: rgb(152, 149, 149);
+  border-radius: 30px;
+  color: white;
+  border: solid 1px white;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 18px 10px;
+  width: 180px;
+  margin: 10px;
+  outline: none;
+
+  &:hover {
+    @include transition;
+    background: rgb(184, 178, 178);
+    border: solid 1px white;
+    color: rgb(242, 241, 241);
+  }
+}
+

@@ -4,52 +4,39 @@ body {
    justify-content: center;
    min-height: 100vh;
    font-family: "Redressed", cursive;
-   background-color: rgb(245, 214, 218); 
+   background-color: rgb(240, 217, 245); 
    height: 100%;
    text-align: center;
    font-size: 18px;
-   margin-top: 200px;
-   background-image: url
+   margin: 1em;
+   border: whitesmoke dashed 3px;
+   background-repeat: none;
+   background-position: absolute;
+   
 }
 
 .container {
-  clear;
+  clear: 0;
   width: 100%;
   margin: 0 auto;
 }
 
-p#wordholder
+#placeholders {
+  font-size:3em;
+}
 
 
 .letters {
     display: flex-center;
 }
-/* button {
-  font-family: "Redressed", cursive;
-  background: rgb(152, 149, 149);
-  border-radius: 10px;
-  color: white;
-  border: solid 1px white;
-  cursor: pointer;
-  font-size: 1em;
-  padding: 18px 10px;
-  width: 40px;
-  height: 30px;
-  margin: 1px;
-  outline: none;
-
-  &:hover {
-    @include transition;
-    background: rgb(184, 178, 178);
-    border: solid 1px white;
-    color: rgb(242, 241, 241);
-  }
-} */
 
 canvas {
   color: white;
   border: black dashed 2px;
-  padding: 15px;
+  padding: 50px;
+  background-image: url(https://totemsurftribe.files.wordpress.com/2024/02/img_1983-2.jpg?resize=438%2C438);
+  background-position: center;
+  background-position: justify;
 }
 
 h1,
@@ -71,7 +58,7 @@ h2 {
 }
 
 p {
-  font-size: 1.2em;
+  font-size: 1.3em;
 }
 
 ul,
@@ -90,10 +77,31 @@ li {
   opacity: .5;
   cursor: default; 
   hover {
-    @include fade;
-    @include opacity;
+    z-index: fade;
+    z-index: opacity;
   }
 }
+button#try {
+  font-family: "Redressed", cursive;
+  background: rgb(152, 149, 149);
+  border-radius: 30px;
+  color: white;
+  border: solid 1px white;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 10px 0px;
+  width: 160px;
+  margin: 10px;
+  outline: none;
+
+  &:hover {
+    transition: 0;
+    background: rgb(184, 178, 178);
+    border: solid 1px white;
+    color: rgb(242, 241, 241);
+  }
+}
+
 
 button#hint,
 button#reset {
@@ -110,7 +118,7 @@ button#reset {
   outline: none;
 
   &:hover {
-    @include transition;
+    transition: 0;
     background: rgb(184, 178, 178);
     border: solid 1px white;
     color: rgb(242, 241, 241);

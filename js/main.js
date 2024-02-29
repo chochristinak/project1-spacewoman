@@ -1,65 +1,96 @@
-
-  //Show random hint that correlates with mystery word
-let HINTS = ["energy centers of the body","opening of the third eye","a state of deep immersion and focus","bend so you dont break","tranquility","the deep blue abyss"];
-let randIdx = Math.floor(Math.random() * HINTS.length);
-let displayHint = HINTS[randIdx];
-document.querySelector('.hint').innerHTML = "Hint: " + HINTS[randIdx]
+//Show random hint that correlates with mystery word
+const HINTS = ["energy centers of the body","opening of the third eye","a state of deep immersion and focus","bend so you dont break","tranquility","the deep blue abyss"];
+// let randHintIdx = Math.floor(Math.random() * HINTS.length);
+// let chosenWord = 
 
 
-let WORDS = ["shakra", "enlightenment", "flow", "stretch", "calm", "ocean"] // array of words
-let chosenWord = WORDS[randIdx] 
-let chosenHint = HINTS[randIdx]
-console.log(WORDS[randIdx])
-console.log(HINTS[randIdx])
 
+const WORDS = ["shakra", "enlightenment", "flow", "stretch", "calm", "ocean"] // array of words
+let randWordIdx = Math.floor(Math.random() * WORDS.length);
+let chosenWord = WORDS[randWordIdx];
+let displayHint = HINTS[randWordIdx];
+document.querySelector('.hint').innerHTML = "Hint: " + displayHint
+
+
+console.log(chosenWord)
 
 /*------state variables------*/
 let holdList = []; // for letters already guessed
-var typedLetter = document.getElementById("insert-letter") // typedletter is player's guess
-var playField = document.getElementById("displayWord") // reveal word if guessed correctly
-var placeHolder = document.getElementById("placeholders") // guessing area
-var inCorrectGuess = document.querySelector('#igcount') // incorrect guesses
-let numGuesses = 6;  // incorrect guess counter
-var typeNewLetter = document.getElementById("typeNewLetter")
-let tryLetterButton = document.getElementById('try'); 
-tryLetterButton.addEventListener ('click', handleClick); // make try button link add correct letter to playfield 
-let answerString = "";
-            // Ensure player typed in a letter *MAIN GAME LOOP*
-for (let i = 0; i < (WORDS[randIdx]).length; i++) {
-    answerString += "_";
-    placeHolder.innerText = answerString}
+let typedLetter = document.getElementById("insert-letter") // typedletter is player's guess
+let displayWord = document.getElementById("displayWord") // *hidden* reveal word if guessed correctly
+let placeHolder = document.getElementById("placeholders") // guessing area
+let incorrectGuess = document.getElementById("guesscount") // incorrect guesses
+let numGuesses = 6;
+let tryLetterButton = document.getElementById("try"); 
+tryLetterButton.addEventListener ('click', updateDisplay); // make try button link add correct letter to playfield 
+let chosenWordArr = new Array(chosenWord.length).fill("_");
+let winAlert = document.getElementById("winAlert")
+let letter
 
-function handleClick(evt) {
-  // iterates throught the string to see if typedLetter is correct
-let letter = typedLetter.value.toLowerCase();
-letterGuess(letter);
+/*--------functions----------*/
+
+
+
+function displayWordWithUnderscores() {
+  let displayString = chosenWordArr.join(" ");
+  placeHolder.innerText = displayString;
+}
+//* Check if typedLetter exists in chosenWord
+function checkLetter() {
+  let letter = typedLetter.value.toLowerCase();
+  for (let i = 0; i < chosenWord.length; i++) {
+    if (letter === chosenWord[i]) {
+      chosenWordArr[i] = letter;
+    // } else if (letter !== chosenWord[i]) {
+    //    (numGuesses + 1); 
+    //   //  incorrectGuess.innerHTML = "1";
+    }
+   }
+  }// else incorrect -> numguesses ++ -> update guessdisplay
+
+// function alerts() {
+//   incorrectGuess.innerHTML = "Incorrect Guesses" + 1
+//   if (letter !== chosenWord[i])
+// }
+
+
+// function handleClick(evt) {
+// letter = typedLetter.value.toLowerCase();
+// // letterGuess(letter);
+// checkLetter()
+// // console.log(letter)
+// }
+
+function updateDisplay() {
+  checkLetter();
+  letterGuess();
+  correctPlacement()
+  typedLetter.value = "";
+  displayWordWithUnderscores();
 }
 
-       //trials for interating through answerString
-// (WORDS[randIdx]).forEach(letterGuess); 
-// if (chosenWord.includes(aswerString))
-// answerString.join(placeHolder + letter);
-// } else { inCorrectGuess +1);
+function correctPlacement() {
+  let letter = typedLetter.value.toLowerCase();
+  for (let i = 0; i < chosenWord.length; i++) {
+    if (chosenWord[i] === letter) {
+      chosenWordArr[i] = letter;
+    }
+  }
+}
 
 
-// for (var j = 0; j < answerString.length; j++) {
-//   if (answerString === (WORDS[randIdx])[j]) {
-//     typedLetter[j] = answerString;
-//     console.log(letter);
-//     answerString = answerString.join(" ");
-//     console.log(answerString.join(" "))
-// }
-// }
-
-
-          // Check if player guessed the correct letter
-function letterGuess(letter) {
+ //* Send to holdList if letter has been gussed already
+ function letterGuess() {
   typedLetter.value = "";
 if (holdList.includes(letter)) {
-  alert("Please guess a different letter.");
-  holdList.push(letter);} 
+  alert("Try another letter.");
+  holdList.push(letter);}
+  else alert("Awesome. Guess another letter!")
+  console.log(holdList)
+}
 
-           // Update the word display after each guess (correct = true, incorrect = false)
+//* Update the word display or show win alert
+function win() {
 let guessUpdate = "";
 let allGuesses = true;
 for (let i = 0; i < chosenWord.length; i++) {
@@ -69,22 +100,44 @@ for (let i = 0; i < chosenWord.length; i++) {
     guessUpdate += "_";
     allGuesses = false; 
   }
+
+if (allGuesses) { 
+  alert("Namaste.");}
+  console.log(allGuesses)
 }
-if (allGuesses) {
-  alert("Congratulations! You guessed the word.");
 }
+
+/*--------------* need help here-----------*/
+// function guessCount() {
+// numGuesses = document.querySelector('#igcount').innerText;
+// if (numGuesses >= 6 == true); (numGuesses + 1);
+// // console.log(numGuesses)
+//         (typedLetter !== chosenWord); 
+//         (numGuesses -1);
+
+//     chosenWord = displayWord
+//     if (numGuesses = 6); 
+//     alert ("The word was:" (chosenWord))
+//   }
+
+//  (console.log(document.querySelector('#igcount').innerHTML));
+
+
+////// revisit this function ///////
+// function win() {
+//   let allGuesses = chosenWordArr.every((letter) => holdList.includes(letter));
+//   if (allGuesses) {
+//     alert ("Namaste. You successfully guessed the word.")
+//   }
+// }
+
+function win(){
+  winAlert = document.getElementById("winAlert")
+  if (chosenWordArr.every((letter)) === chosenWord); {
+    showAlert(winAlert.innerHTML) = "Namaste. You successfully guessed the word."
+  }
 }
 
 
 // function generateAnswerDisplay(chosenWord)
 // answerDisplay.innerHTML = generateAnswerDisplay(chosenWord);
-
-
-// function inCorrectGuesses (inCorrectGuess) {
-//  if ((chosenWord).indexOf(typedLetter) == -1 && 
-//  (chosenWord).indexOf(typedLetter) == -1) 
-//  push.typedLetter(holdList);
-// } else  { (inCorrectGuess) + 1 );
-
-// }// increase incorrect guess count if typedletter is not in chosenword
-

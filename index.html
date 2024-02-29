@@ -16,30 +16,32 @@
      <h2>Guess the word by typing in a letter</h2>
       <p class="hint">Hint: </p>
  </div>
-<div>
- <p id="displayWord" class="hidden"></p> 
-  
+
+ <p class="displayWord" style="display:none;">The word correct word was:</p>
+ 
  <div id=placeholders></div>
-  </div>
 
   <input type="text"
            maxlength="1"
            id="insert-letter"><br></input>
 
-<div class="try again alert">
-    <span id="typeNewLetter" class ="hidden"></span>
+    <p id="try again alert"style="display:none;"></p>
+
+    <span id="typeNewLetter"></span>
 </div>
      <button id="try">
      Try letter
      </button>
 
-     <p id="incorrectguess">Incorrect guesses: <span id="igcount">0</span>/6</p>
+     <p id="guesscount"></p>
+
+     <p id="win alert"></p>
 
       <canvas id="spacewoman"></canvas>
 
-      <div class="container">
+      <div id="container">
 
-       <!-- <button id="hint">Hint</button> -->
+      <div id="winAlert"></div>
 
        <button id="reset" onClick="window.location.reload()">Play again</button>
      </div>

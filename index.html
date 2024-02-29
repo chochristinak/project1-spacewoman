@@ -15,9 +15,11 @@
     <h1>Spacewoman</h1>
      <h2>Guess the word by typing in a letter</h2>
       <p class="hint">Hint: </p>
+      
  </div>
 
- <p class="displayWord" style="display:none;">The word correct word was:</p>
+
+       <h3 id="displayWord"style="display:none;"></h3>
  
  <div id=placeholders></div>
 
@@ -25,7 +27,10 @@
            maxlength="1"
            id="insert-letter"><br></input>
 
-    <p id="try again alert"style="display:none;"></p>
+           <h3 id="winAlert"></h3>
+
+    <p id="try-again"></p>
+    <p id ="good-job"></p>
 
     <span id="typeNewLetter"></span>
 </div>
@@ -33,22 +38,23 @@
      Try letter
      </button>
 
-     <p id="guesscount"></p>
+     <h3></h3>
+     
+     <h3 id="guesscount"></h3>
 
-     <p id="win alert"></p>
+     
 
       <canvas id="spacewoman"></canvas>
 
       <div id="container">
 
-      <div id="winAlert"></div>
+     
 
        <button id="reset" onClick="window.location.reload()">Play again</button>
      </div>
  </div>
 </body>
 </html>
- <!-- create a container for each letter? -->
  
  
 

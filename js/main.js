@@ -1,7 +1,6 @@
 //Show random hint that correlates with mystery word
-const HINTS = ["energy centers of the body","opening of the third eye","a state of deep immersion and focus","bend so you dont break","tranquility","the deep blue abyss"];
-// let randHintIdx = Math.floor(Math.random() * HINTS.length);
-// let chosenWord = 
+const HINTS = ["energy centers of the body","opening of the third eye","a state of deep immersion and focus","bend so you dont break","tranquility","the deep blue abyss"]
+
 
 
 
@@ -15,51 +14,55 @@ document.querySelector('.hint').innerHTML = "Hint: " + displayHint
 console.log(chosenWord)
 
 /*------state variables------*/
-let holdList = []; // for letters already guessed
-let typedLetter = document.getElementById("insert-letter") // typedletter is player's guess
-let displayWord = document.getElementById("displayWord") // *hidden* reveal word if guessed correctly
-let placeHolder = document.getElementById("placeholders") // guessing area
-let incorrectGuess = document.getElementById("guesscount") // incorrect guesses
+
+
+
+
+/*------cached elements------*/
+let holdList = []; // for correct letters guessed
 let numGuesses = 6;
+let typedLetter = document.getElementById("insert-letter"); // typedletter is player's guess
+let displayWord = document.getElementById("displayWord"); // *hidden* reveal word if guessed correctly
+let placeHolder = document.getElementById("placeholders"); // guessing area
+let guessesLeft = document.getElementById("guesscount"); // incorrect guesses
 let tryLetterButton = document.getElementById("try"); 
-tryLetterButton.addEventListener ('click', updateDisplay); // make try button link add correct letter to playfield 
+let correctGuess = document.getElementById("good-job"); 
+let tryAgain = document.getElementById("try-again"); 
+let winAlert = document.getElementById("winAlert");
+
 let chosenWordArr = new Array(chosenWord.length).fill("_");
-let winAlert = document.getElementById("winAlert")
+let messageEl = document.querySelector("h3");
 let letter
 
+/*----- event listeners -----*/
+tryLetterButton.addEventListener ('click', updateDisplay); // make try button link add correct letter to playfield 
+
+
 /*--------functions----------*/
+updateDisplay();
+// gamOver(); // player didn't guess word 
 
-
+// function gamOver(){}
 
 function displayWordWithUnderscores() {
   let displayString = chosenWordArr.join(" ");
   placeHolder.innerText = displayString;
 }
+
+
 //* Check if typedLetter exists in chosenWord
 function checkLetter() {
   let letter = typedLetter.value.toLowerCase();
   for (let i = 0; i < chosenWord.length; i++) {
     if (letter === chosenWord[i]) {
-      chosenWordArr[i] = letter;
-    // } else if (letter !== chosenWord[i]) {
-    //    (numGuesses + 1); 
-    //   //  incorrectGuess.innerHTML = "1";
-    }
+      chosenWordArr[i] = letter; {
+        if (letter !== (chosenWord[i]));
+        holdList.push(letter);
+        // console.log(holdList)
+      }
+    } 
    }
-  }// else incorrect -> numguesses ++ -> update guessdisplay
-
-// function alerts() {
-//   incorrectGuess.innerHTML = "Incorrect Guesses" + 1
-//   if (letter !== chosenWord[i])
-// }
-
-
-// function handleClick(evt) {
-// letter = typedLetter.value.toLowerCase();
-// // letterGuess(letter);
-// checkLetter()
-// // console.log(letter)
-// }
+  }
 
 function updateDisplay() {
   checkLetter();
@@ -67,50 +70,35 @@ function updateDisplay() {
   correctPlacement()
   typedLetter.value = "";
   displayWordWithUnderscores();
+  
 }
 
 function correctPlacement() {
   let letter = typedLetter.value.toLowerCase();
   for (let i = 0; i < chosenWord.length; i++) {
     if (chosenWord[i] === letter) {
-      chosenWordArr[i] = letter;
+      chosenWordArr[i] = letter;}
+      win();
+      // (console.log(chosenWordArr))
     }
   }
-}
 
+ //* Send to holdList if letter is incorrect
 
- //* Send to holdList if letter has been gussed already
- function letterGuess() {
-  typedLetter.value = "";
+function letterGuess() {
 if (holdList.includes(letter)) {
-  alert("Try another letter.");
-  holdList.push(letter);}
-  else alert("Awesome. Guess another letter!")
-  console.log(holdList)
+ holdList.push(letter);} 
+else
+if (!chosenWord.includes(letter)) {
+  numGuesses = numGuesses -1;
+  guessesLeft.innerText = `Guesses left: ${numGuesses}`;
 }
-
-//* Update the word display or show win alert
-function win() {
-let guessUpdate = "";
-let allGuesses = true;
-for (let i = 0; i < chosenWord.length; i++) {
-  if (holdList.includes(chosenWord[i])) {
-    guessUpdate += chosenWord[i] + " ";
-  } else {
-    guessUpdate += "_";
-    allGuesses = false; 
-  }
-
-if (allGuesses) { 
-  alert("Namaste.");}
-  console.log(allGuesses)
-}
-}
+} 
 
 /*--------------* need help here-----------*/
 // function guessCount() {
-// numGuesses = document.querySelector('#igcount').innerText;
-// if (numGuesses >= 6 == true); (numGuesses + 1);
+// numGuesses = document.getElementById("guesscount")
+// if (numGuesses >= 6 === true); (numGuesses + 1);
 // // console.log(numGuesses)
 //         (typedLetter !== chosenWord); 
 //         (numGuesses -1);
@@ -118,26 +106,16 @@ if (allGuesses) {
 //     chosenWord = displayWord
 //     if (numGuesses = 6); 
 //     alert ("The word was:" (chosenWord))
-//   }
 
-//  (console.log(document.querySelector('#igcount').innerHTML));
-
-
-////// revisit this function ///////
-// function win() {
-//   let allGuesses = chosenWordArr.every((letter) => holdList.includes(letter));
-//   if (allGuesses) {
-//     alert ("Namaste. You successfully guessed the word.")
-//   }
-// }
-
-function win(){
-  winAlert = document.getElementById("winAlert")
-  if (chosenWordArr.every((letter)) === chosenWord); {
-    showAlert(winAlert.innerHTML) = "Namaste. You successfully guessed the word."
-  }
+function win() {
+if (chosenWordArr.join("") === chosenWord) {
+  winAlert.innerText = "Namaste. You successfully guessed the word."
+} 
 }
 
+ function revealWord() {
+ let unFinishedGuess = chosenWord
+ if (chosenWordArr.join("") !== chosenWord && (numGuesses = 0)); 
+ messageEl.innerText = "The word was: " + `${chosenWord}`
+ }
 
-// function generateAnswerDisplay(chosenWord)
-// answerDisplay.innerHTML = generateAnswerDisplay(chosenWord);

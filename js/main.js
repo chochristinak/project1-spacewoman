@@ -14,13 +14,10 @@ document.querySelector('.hint').innerHTML = "Hint: " + displayHint
 console.log(chosenWord)
 
 /*------state variables------*/
-
-
-
+let holdList = []; // for correct letters guessed
+let numGuesses = (chosenWord.length) + 2
 
 /*------cached elements------*/
-let holdList = []; // for correct letters guessed
-let numGuesses = 7
 let typedLetter = document.getElementById("insert-letter"); // typedletter is player's guess
 let displayWord = document.getElementById("displayWord"); // *hidden* reveal word if guessed correctly
 let placeHolder = document.getElementById("placeholders"); // guessing area
@@ -39,15 +36,16 @@ tryLetterButton.addEventListener ('click', updateDisplay); // make try button li
 
 
 /*--------functions----------*/
-updateDisplay();
+updateDisplay(); // update each correct letter in placeholder
 
+// Create placeholders for letters in chosenWord
 function displayWordWithUnderscores() {
   let displayString = chosenWordArr.join(" ");
   placeHolder.innerText = displayString;
 }
 
 
-//* Check if typedLetter exists in chosenWord
+// Check if typedLetter exists in chosenWord
 function checkLetter() {
   let letter = typedLetter.value.toLowerCase();
   for (let i = 0; i < chosenWord.length; i++) {
@@ -55,11 +53,11 @@ function checkLetter() {
       chosenWordArr[i] = letter; {
         if (letter !== (chosenWord[i]));
         holdList.push(letter);
-        // console.log(holdList)
+        numGuesses++;
       }
-    } 
+    }
    }
-  }
+  } 
 
 function updateDisplay() {
   checkLetter();
@@ -73,42 +71,41 @@ function correctPlacement() {
   let letter = typedLetter.value.toLowerCase();
   for (let i = 0; i < chosenWord.length; i++) {
     if (chosenWord[i] === letter) {
-      chosenWordArr[i] = letter;
-      numGuesses+-1;}
+      chosenWordArr[i] = letter;}
       win();
-      // (console.log(chosenWordArr))
+    } 
     }
-  }
 
- //* Send to holdList if letter is incorrect
+ // Send to holdList if letter is incorrect
 
 function letterGuess() {
 if (holdList.includes(letter)) {
- holdList.push(letter);} 
+ holdList.push(letter);
+ numGuesses+-1;
+} 
 else
 if (!chosenWord.includes(letter)) {
   numGuesses--; 
   guessesLeft.innerText = `Guesses left: ${numGuesses}`;
-// } else 
-//   if ((numGuesses === 0) && ((holdList.split("")) !== (chosenWordArr.join(""))));{
-//     messageEl.innerText = "The word was: " + `${chosenWord}` 
-//   console.log(holdList)
-// }
+} else {
+if ((numGuesses <=0) && ((holdList !== chosenWord.length)));
+  {messageEl.innerText = "The word was: " + `${chosenWord}`;
+}
 }
 }
 
 function win() {
 if (chosenWordArr.join("") === chosenWord) {
   winAlert.innerText = "Namaste. You successfully guessed the word."
-} else {
-  if ((numGuesses <= 0) &&
-     (holdList.split("") != chosenWordArr.join("")));
-  messageEl.innerText = "The word was: " + `${chosenWord}`}
+// } else {
+//   if ((numGuesses <= 0) &&
+//      (holdList.split("") != chosenWordArr.join("")));
+//   messageEl.innerText = "The word was: " + `${chosenWord}`}
+}
 }
 
  function revealWord() {
   typedLetter = "";
-  updateDisplay();
  if ((numGuesses === 0) && (holdList.split("") === chosenWordArr.join("")));
 //  console.log(chosenWordArr.join)
 //  console.log(typedLetter)

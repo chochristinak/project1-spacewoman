@@ -45,3 +45,4 @@ This is a modified version of Spaceman, named SPACEWOMAN. SPACEWOMAN is a letter
 ## :satellite: **Upcoming Features**
 - :ghost: Animated canvas board for spacewoman
 - :ghost: Style updates via CSS
+- :ghost: Enable input through keyboard rather than click

@@ -1,10 +1,10 @@
 //Show random hint that correlates with mystery word
-const HINTS = ["energy centers of the body","opening of the third eye","a state of deep immersion and focus","bend so you dont break","tranquility","the deep blue abyss"]
+const HINTS = ["energy centers of the body","opening of the third eye","a state of deep immersion and focus","bend so you dont break","tranquility","the deep blue abyss", "mother nature", "a creative style of yoga that seamlessly connects breath and movement", "dark and feminine principle of the universe", "spore-bearing fruit, some might call breakthrough medicine"]
 
 
 
 
-const WORDS = ["shakra", "enlightenment", "flow", "stretch", "calm", "ocean"] // array of words
+const WORDS = ["shakra", "enlightenment", "flow", "stretch", "calm", "ocean", "earth", "vinyasa", "yin", "psilocybin"] // array of words
 let randWordIdx = Math.floor(Math.random() * WORDS.length);
 let chosenWord = WORDS[randWordIdx];
 let displayHint = HINTS[randWordIdx];
@@ -20,7 +20,7 @@ console.log(chosenWord)
 
 /*------cached elements------*/
 let holdList = []; // for correct letters guessed
-let numGuesses = 6;
+let numGuesses = (chosenWord.length) + 1
 let typedLetter = document.getElementById("insert-letter"); // typedletter is player's guess
 let displayWord = document.getElementById("displayWord"); // *hidden* reveal word if guessed correctly
 let placeHolder = document.getElementById("placeholders"); // guessing area
@@ -40,9 +40,6 @@ tryLetterButton.addEventListener ('click', updateDisplay); // make try button li
 
 /*--------functions----------*/
 updateDisplay();
-// gamOver(); // player didn't guess word 
-
-// function gamOver(){}
 
 function displayWordWithUnderscores() {
   let displayString = chosenWordArr.join(" ");
@@ -65,12 +62,12 @@ function checkLetter() {
   }
 
 function updateDisplay() {
+  // numGuesses = 8;
   checkLetter();
   letterGuess();
   correctPlacement()
   typedLetter.value = "";
   displayWordWithUnderscores();
-  
 }
 
 function correctPlacement() {
@@ -90,23 +87,10 @@ if (holdList.includes(letter)) {
  holdList.push(letter);} 
 else
 if (!chosenWord.includes(letter)) {
-  numGuesses = numGuesses -1;
+  numGuesses--;
   guessesLeft.innerText = `Guesses left: ${numGuesses}`;
 }
 } 
-
-/*--------------* need help here-----------*/
-// function guessCount() {
-// numGuesses = document.getElementById("guesscount")
-// if (numGuesses >= 6 === true); (numGuesses + 1);
-// // console.log(numGuesses)
-//         (typedLetter !== chosenWord); 
-//         (numGuesses -1);
-
-//     chosenWord = displayWord
-//     if (numGuesses = 6); 
-//     alert ("The word was:" (chosenWord))
-
 function win() {
 if (chosenWordArr.join("") === chosenWord) {
   winAlert.innerText = "Namaste. You successfully guessed the word."

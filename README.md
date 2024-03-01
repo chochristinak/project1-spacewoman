@@ -40,7 +40,7 @@ This is a modified version of Spaceman, named SPACEWOMAN. SPACEWOMAN is a letter
 [Click to View Project Planning!]
 (https://trello.com/c/vxZbzd91/192-learn-markdown) 
 
-[Click to Play Spacewoman!](https://github.com/chochristinak/project1-spacewoman)
+[Click to Play Spacewoman!](https://chochristinak.github.io/project1-spacewoman/)
 
 ## :satellite: **Upcoming Features**
 - :ghost: Animated canvas board for spacewoman

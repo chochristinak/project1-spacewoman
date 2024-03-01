@@ -20,7 +20,7 @@ console.log(chosenWord)
 
 /*------cached elements------*/
 let holdList = []; // for correct letters guessed
-let numGuesses = (chosenWord.length) + 1
+let numGuesses = 7
 let typedLetter = document.getElementById("insert-letter"); // typedletter is player's guess
 let displayWord = document.getElementById("displayWord"); // *hidden* reveal word if guessed correctly
 let placeHolder = document.getElementById("placeholders"); // guessing area
@@ -62,7 +62,6 @@ function checkLetter() {
   }
 
 function updateDisplay() {
-  // numGuesses = 8;
   checkLetter();
   letterGuess();
   correctPlacement()
@@ -74,7 +73,8 @@ function correctPlacement() {
   let letter = typedLetter.value.toLowerCase();
   for (let i = 0; i < chosenWord.length; i++) {
     if (chosenWord[i] === letter) {
-      chosenWordArr[i] = letter;}
+      chosenWordArr[i] = letter;
+      numGuesses+-1;}
       win();
       // (console.log(chosenWordArr))
     }
@@ -87,19 +87,29 @@ if (holdList.includes(letter)) {
  holdList.push(letter);} 
 else
 if (!chosenWord.includes(letter)) {
-  numGuesses--;
+  numGuesses--; 
   guessesLeft.innerText = `Guesses left: ${numGuesses}`;
+// } else 
+//   if ((numGuesses === 0) && ((holdList.split("")) !== (chosenWordArr.join(""))));{
+//     messageEl.innerText = "The word was: " + `${chosenWord}` 
+//   console.log(holdList)
+// }
 }
-} 
+}
+
 function win() {
 if (chosenWordArr.join("") === chosenWord) {
   winAlert.innerText = "Namaste. You successfully guessed the word."
-} 
+} else {
+  if ((numGuesses <= 0) &&
+     (holdList.split("") != chosenWordArr.join("")));
+  messageEl.innerText = "The word was: " + `${chosenWord}`}
 }
 
  function revealWord() {
- let unFinishedGuess = chosenWord
- if (chosenWordArr.join("") !== chosenWord && (numGuesses = 0)); 
- messageEl.innerText = "The word was: " + `${chosenWord}`
- }
-
+  typedLetter = "";
+  updateDisplay();
+ if ((numGuesses === 0) && (holdList.split("") === chosenWordArr.join("")));
+//  console.log(chosenWordArr.join)
+//  console.log(typedLetter)
+  }

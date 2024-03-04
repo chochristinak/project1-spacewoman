@@ -1,5 +1,5 @@
 //Show random hint that correlates with mystery word
-const HINTS = ["energy centers of the body","opening of the third eye","a state of deep immersion and focus","bend so you dont break","tranquility","the deep blue abyss", "mother nature", "a creative style of yoga that seamlessly connects breath and movement", "dark and feminine principle of the universe", "spore-bearing fruit, some might call breakthrough medicine"]
+const HINTS = ["energy centers of the body","opening of the third eye","a state of deep immersion and focus","bend so you dont break","tranquil","the deep blue abyss", "mother nature", "a creative style of yoga that connects breath and movement", "dark and feminine principle of the universe", "spore-bearing fruit, some might call breakthrough medicine"]
 
 
 
@@ -15,7 +15,9 @@ console.log(chosenWord)
 
 /*------state variables------*/
 let holdList = []; // for correct letters guessed
-let numGuesses = (chosenWord.length) + 2
+let numGuesses = (chosenWord.length) + 1
+
+
 
 /*------cached elements------*/
 let typedLetter = document.getElementById("insert-letter"); // typedletter is player's guess
@@ -59,6 +61,7 @@ function checkLetter() {
    }
   } 
 
+
 function updateDisplay() {
   checkLetter();
   letterGuess();
@@ -79,34 +82,25 @@ function correctPlacement() {
  // Send to holdList if letter is incorrect
 
 function letterGuess() {
-if (holdList.includes(letter)) {
- holdList.push(letter);
- numGuesses+-1;
-} 
-else
-if (!chosenWord.includes(letter)) {
-  numGuesses--; 
-  guessesLeft.innerText = `Guesses left: ${numGuesses}`;
-} else {
-if ((numGuesses <=0) && ((holdList !== chosenWord.length)));
-  {messageEl.innerText = "The word was: " + `${chosenWord}`;
+  if (numGuesses === 0) {
+  {messageEl.innerText = "Oh no, you're out of guesses. The word was: " + `${chosenWord.toUpperCase()}`;
+  document.getElementById("try").disabled = true;
+  return; 
 }
+
+if (holdList.includes(letter)){
+ holdList.push(letter)
+ numGuesses=-1;
 }
 }
 
+if (!chosenWord.includes(letter)){
+  numGuesses--;
+  guessesLeft.innerText = `Guesses left: ${numGuesses}`;
+}
+}
 function win() {
 if (chosenWordArr.join("") === chosenWord) {
   winAlert.innerText = "Namaste. You successfully guessed the word."
-// } else {
-//   if ((numGuesses <= 0) &&
-//      (holdList.split("") != chosenWordArr.join("")));
-//   messageEl.innerText = "The word was: " + `${chosenWord}`}
 }
 }
-
- function revealWord() {
-  typedLetter = "";
- if ((numGuesses === 0) && (holdList.split("") === chosenWordArr.join("")));
-//  console.log(chosenWordArr.join)
-//  console.log(typedLetter)
-  }

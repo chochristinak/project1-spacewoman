@@ -28,7 +28,7 @@ This is a modified version of Spaceman, named SPACEWOMAN. SPACEWOMAN is a letter
 ![VSCode](https://img.shields.io/badge/-VS_Code-05122A?style=flat&logo=visualstudio)
 
 
-**Blame**
+**Additional Resources**
 1. Google
 2. W3
 3. GeeksforGeeks

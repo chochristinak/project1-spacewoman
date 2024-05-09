@@ -124,3 +124,12 @@ button#reset {
     color: rgb(242, 241, 241);
   }
 }
+
+.incorrect-guess {
+  opacity: 1; 
+  transition: opacity 0.3s ease; 
+}
+
+.incorrect-guess.faded {
+  opacity: 0.5; 
+}

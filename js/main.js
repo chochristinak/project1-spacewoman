@@ -16,7 +16,7 @@ const HINTS = [
 ];
 
 const WORDS = [
-  "shakra",
+  "chakra",
   "enlightenment",
   "flow",
   "stretch",
@@ -37,7 +37,7 @@ let numGuesses = chosenWord.length + 1;
 let maxGuesses = chosenWord.length + 1;
 let incorrectGuesses = 0;
 let typedLetter = document.getElementById("insert-letter");
-let displayWord = document.getElementById("displayWord");
+// let displayWord = document.getElementById("displayWord");
 let placeHolder = document.getElementById("placeholders");
 let guessesLeft = document.getElementById("guesscount");
 let tryLetterButton = document.getElementById("try");
@@ -83,15 +83,10 @@ function checkLetter() {
   }
 }
 
-
 function drawImage() {
-  // Calculate the opacity based on the number of incorrect guesses
-  let opacity = 1 - (incorrectGuesses / maxGuesses);
-
-  // Set the canvas opacity
+  let opacity = 1 - incorrectGuesses / maxGuesses;
   canvas.style.opacity = opacity < 0 ? 0 : opacity;
 }
-
 
 function updateDisplay() {
   checkLetter();
@@ -102,21 +97,48 @@ function updateDisplay() {
   guessesLeft.innerText = `Guesses left: ${numGuesses}`;
   if (numGuesses === 0) {
     messageEl.innerText =
-      "Oh no, you're out of guesses. The word was: " +
-      `${chosenWord.toUpperCase()}`;
-    document.getElementById("try").disabled = true;
-    document.getElementById("canvas-img").src = "https://totemsurftribe.files.wordpress.com/2024/03/clipart-psilocybe-mushroom-psychedelic-art-acid-art-ai-generated-image_894117-1385-1.jpg?resize=438%2C438";
+      "Oh no, looks like we're still on planet Earth... \n and SPACEWOMAN has gone up \n\n The word was: ";
+    const wordElement = document.createElement("span");
+    wordElement.textContent = `${chosenWord.toUpperCase()}`;
+    wordElement.style.fontSize = "30px";
+    wordElement.style.fontWeight = "600";
+    messageEl.appendChild(wordElement);
+    canvas.style.opacity = 1;
+    canvas.style.backgroundImage =
+      "url(https://totemsurftribe.files.wordpress.com/2024/03/clipart-psilocybe-mushroom-psychedelic-art-acid-art-ai-generated-image_894117-1385-1.jpg)";
+    canvas.style.backgroundSize = "cover";
+    tryLetterButton.style.display = "none";
+    onLoss();
     return;
   }
   win();
 }
 
+function onLoss() {
+  document.body.style.backgroundColor = "white";
+  document.getElementById("try").style.display = "none";
+  const resetButton = document.getElementById("reset");
+  resetButton.disabled = false;
+  resetButton.classList.add("rainbow-gradient");
+}
 
 function win() {
   if (chosenWordArr.join("") === chosenWord) {
-    winAlert.innerText = "Namaste. You successfully guessed the word.";
-    document.getElementById("canvas-img").src =
-      "https://totemsurftribe.files.wordpress.com/2024/03/clipart-psilocybe-mushroom-psychedelic-art-acid-art-ai-generated-image_894117-1385-1.jpg?resize=438%2C438";
+    winAlert.innerText = "NAMASTE. You successfully guessed the word.";
+    document.getElementById("try").style.display = "none";
+    document.body.style.backgroundColor = "black";
+    canvas.style.backgroundImage = "url(https://totemsurftribe.files.wordpress.com/2024/02/img_1981.jpg)";
+    canvas.style.backgroundSize = "cover";
+    typedLetter.disabled = true;
+    const resetButton = document.getElementById("reset");
+    resetButton.disabled = false;
+    resetButton.classList.add("rainbow-gradient");
+    resetButton.style.display = "center"; 
     drawImage();
+    const allTextElements = document.querySelectorAll("body *");
+    allTextElements.forEach(element => {
+      element.style.color = "white";
+    });
   }
 }
+  

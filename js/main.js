@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 window.onload = function () {
   document.getElementById("insert-letter").focus();
 };
-=======
-//Show random hint that correlates with mystery word
-const HINTS = ["energy centers of the body","opening of the third eye","a state of deep immersion and focus","bend so you dont break","tranquil","the deep blue abyss", "mother nature", "a creative style of yoga that connects breath and movement", "dark and feminine principle of the universe", "spore-bearing fruit, some might call breakthrough medicine"]
->>>>>>> 7c093afc27559b98895bc3e6407641a54bc06fdb
 
 const HINTS = [
   "energy centers of the body",
@@ -20,7 +15,6 @@ const HINTS = [
   "spore-bearing fruit, some might call breakthrough medicine",
 ];
 
-<<<<<<< HEAD
 const WORDS = [
   "chakra",
   "enlightenment",
@@ -33,17 +27,11 @@ const WORDS = [
   "yin",
   "psilocybin",
 ];
-=======
-
-
-const WORDS = ["shakra", "enlightenment", "flow", "stretch", "calm", "ocean", "earth", "vinyasa", "yin", "psilocybin"] // array of words
->>>>>>> 7c093afc27559b98895bc3e6407641a54bc06fdb
 let randWordIdx = Math.floor(Math.random() * WORDS.length);
 let chosenWord = WORDS[randWordIdx];
 let displayHint = HINTS[randWordIdx];
 document.querySelector(".hint").innerHTML = "Hint: " + displayHint;
 
-<<<<<<< HEAD
 let holdList = [];
 let numGuesses = chosenWord.length + 1;
 let maxGuesses = chosenWord.length + 1;
@@ -53,25 +41,6 @@ let typedLetter = document.getElementById("insert-letter");
 let placeHolder = document.getElementById("placeholders");
 let guessesLeft = document.getElementById("guesscount");
 let tryLetterButton = document.getElementById("try");
-=======
-
-console.log(chosenWord)
-
-/*------state variables------*/
-let holdList = []; // for correct letters guessed
-let numGuesses = (chosenWord.length) + 1
-
-
-
-/*------cached elements------*/
-let typedLetter = document.getElementById("insert-letter"); // typedletter is player's guess
-let displayWord = document.getElementById("displayWord"); // *hidden* reveal word if guessed correctly
-let placeHolder = document.getElementById("placeholders"); // guessing area
-let guessesLeft = document.getElementById("guesscount"); // incorrect guesses
-let tryLetterButton = document.getElementById("try"); 
-let correctGuess = document.getElementById("good-job"); 
-let tryAgain = document.getElementById("try-again"); 
->>>>>>> 7c093afc27559b98895bc3e6407641a54bc06fdb
 let winAlert = document.getElementById("winAlert");
 let chosenWordArr = new Array(chosenWord.length).fill("_");
 let messageEl = document.querySelector("h3");
@@ -89,13 +58,7 @@ typedLetter.addEventListener("keyup", function (event) {
   }
 });
 
-<<<<<<< HEAD
 updateDisplay();
-=======
-
-/*--------functions----------*/
-updateDisplay(); // update each correct letter in placeholder
->>>>>>> 7c093afc27559b98895bc3e6407641a54bc06fdb
 
 // Create placeholders for letters in chosenWord
 function displayWordWithUnderscores() {
@@ -103,18 +66,12 @@ function displayWordWithUnderscores() {
   placeHolder.innerText = displayString;
 }
 
-<<<<<<< HEAD
-=======
-
-// Check if typedLetter exists in chosenWord
->>>>>>> 7c093afc27559b98895bc3e6407641a54bc06fdb
 function checkLetter() {
   let letter = typedLetter.value.toLowerCase();
   holdList.push(letter);
   let letterFound = false;
   for (let i = 0; i < chosenWord.length; i++) {
     if (letter === chosenWord[i]) {
-<<<<<<< HEAD
       chosenWordArr[i] = letter;
       letterFound = true;
     }
@@ -131,55 +88,13 @@ function drawImage() {
   let opacity = 1 - incorrectGuesses / maxGuesses;
   canvas.style.opacity = opacity < 0 ? 0 : opacity;
 }
-=======
-      chosenWordArr[i] = letter; {
-        if (letter !== (chosenWord[i]));
-        holdList.push(letter);
-        numGuesses++;
-      }
-    }
-   }
-  } 
-
->>>>>>> 7c093afc27559b98895bc3e6407641a54bc06fdb
 
 function updateDisplay() {
   checkLetter();
   typedLetter.value = "";
   displayWordWithUnderscores();
-<<<<<<< HEAD
   drawImage();
   typedLetter.focus();
-=======
-}
-
-function correctPlacement() {
-  let letter = typedLetter.value.toLowerCase();
-  for (let i = 0; i < chosenWord.length; i++) {
-    if (chosenWord[i] === letter) {
-      chosenWordArr[i] = letter;}
-      win();
-    } 
-    }
-
- // Send to holdList if letter is incorrect
-
-function letterGuess() {
-  if (numGuesses === 0) {
-  {messageEl.innerText = "Oh no, you're out of guesses. The word was: " + `${chosenWord.toUpperCase()}`;
-  document.getElementById("try").disabled = true;
-  return; 
-}
-
-if (holdList.includes(letter)){
- holdList.push(letter)
- numGuesses=-1;
-}
-}
-
-if (!chosenWord.includes(letter)){
-  numGuesses--;
->>>>>>> 7c093afc27559b98895bc3e6407641a54bc06fdb
   guessesLeft.innerText = `Guesses left: ${numGuesses}`;
   if (numGuesses === 0) {
     messageEl.innerText =
@@ -199,7 +114,6 @@ if (!chosenWord.includes(letter)){
   }
   win();
 }
-<<<<<<< HEAD
 
 function onLoss() {
   document.body.style.backgroundColor = "white";
@@ -229,11 +143,3 @@ function win() {
   }
 }
   
-=======
-}
-function win() {
-if (chosenWordArr.join("") === chosenWord) {
-  winAlert.innerText = "Namaste. You successfully guessed the word."
-}
-}
->>>>>>> 7c093afc27559b98895bc3e6407641a54bc06fdb

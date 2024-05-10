@@ -1,7 +1,8 @@
-https://github.com/chochristinak/project1-spacewoman
+
 <div id="header" align="center">
 
   <img src="https://totemsurftribe.files.wordpress.com/2024/02/img_1981.jpg?resize=438%2C438" width="800" height="400">
+  [Click to Play Spacewoman!](https://chochristinak.github.io/project1-spacewoman/)
 
 </div>
 
@@ -49,5 +50,3 @@ This is a modified version of Spaceman, named SPACEWOMAN. SPACEWOMAN is a letter
 - :ghost: Style updates via CSS
 <<<<<<< HEAD
 - :ghost: Enable input through keyboard rather than click
-=======
->>>>>>> 7c093afc27559b98895bc3e6407641a54bc06fdb

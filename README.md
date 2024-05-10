@@ -5,6 +5,8 @@ https://github.com/chochristinak/project1-spacewoman
 
 </div>
 
+[Click to Play Spacewoman!](https://chochristinak.github.io/project1-spacewoman/)
+
 <SPACEWOMAN>
 <h1>SPACEWOMAN</h1>
 This is a modified version of Spaceman, named SPACEWOMAN. SPACEWOMAN is a letter-guessing game for words related to yoga, nature, and spirituality. The player guesses one letter at a time and clicks "try letter" button to submit a guess. If all letters are guessed correctly, a win message appears. 

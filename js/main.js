@@ -125,6 +125,7 @@ function onLoss() {
 function win() {
   if (chosenWordArr.join("") === chosenWord) {
     winAlert.innerText = "NAMASTE. You successfully guessed the word.";
+    document.getElementById("try").style.display = "none";
     document.body.style.backgroundColor = "black";
     canvas.style.backgroundImage = "url(https://totemsurftribe.files.wordpress.com/2024/02/img_1981.jpg)";
     canvas.style.backgroundSize = "cover";

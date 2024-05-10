@@ -60,7 +60,6 @@ typedLetter.addEventListener("keyup", function (event) {
 
 updateDisplay();
 
-// Create placeholders for letters in chosenWord
 function displayWordWithUnderscores() {
   let displayString = chosenWordArr.join(" ");
   placeHolder.innerText = displayString;

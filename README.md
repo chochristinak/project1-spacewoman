@@ -1,9 +1,11 @@
-https://github.com/chochristinak/project1-spacewoman
+
 <div id="header" align="center">
 
   <img src="https://totemsurftribe.files.wordpress.com/2024/02/img_1981.jpg?resize=438%2C438" width="800" height="400">
+  [Click to Play Spacewoman!](https://chochristinak.github.io/project1-spacewoman/)
 
 </div>
+
 
 <SPACEWOMAN>
 <h1>SPACEWOMAN</h1>
